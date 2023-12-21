@@ -1,31 +1,28 @@
 ---
-title: 'Python Basic (Analytics)'
-date: '2023-10-12'
+title: 'Just Testing'
+date: '2023-04-28'
 tags: ['analytics']
 ---
 
-# Python Basic (Analytics)
+We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
 
-## Data Analytics
+```ts
+const sum = (num1: number, num2: number): number => {
+  return num1 + num2;
+};
 
-## Materi
+console.log(sum(4, 8)); //12
+```
 
-- **[Tipe Data](#tipe-data)**
-- **[Data Preview](#data-preview)**
-- **[Pencarian Nilai](#pencarian-nilai)**
-- **[Data Manipulation](#data-manipulation)**
+You can use Static Generation for many types of pages, including:
 
-### Tipe Data
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
 
-{/* [Data yang kita pakai](https://res.cloudinary.com/dgil2czkf/raw/upload/v1700316354/DICE/Data%20Gaji.xlsx) */}
+You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
 
-#### Tipe Data berdasarkan nilai
+On the other hand, Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
 
-- Int = 1, 2, 3
-- Float = 1.2, 3.55555, 3.14
-- Bool = 1, 0
-- String = "Assalamualaikum, hi halo."
-
-## Importing Data
-
-**Install and Import Pandas Library**
+In that case, you can use **Server-Side Rendering**. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate data.
