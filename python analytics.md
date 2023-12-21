@@ -1,0 +1,222 @@
+---
+title: 'Python Basic (Analytics)'
+date: '2023-10-02'
+tags: ['analytics']
+---
+
+# Python Basic (Analytics)
+
+_Data Analytics_
+<!-- ![Alt text](https://res.cloudinary.com/dgil2czkf/image/upload/v1700316407/DICE/Logo%20Dice.png) -->
+
+# Materi
+
+- **[Tipe Data](#tipe-data)**
+- **[Data Preview](#data-preview)**
+- **[Pencarian Nilai](#pencarian-nilai)**
+- **[Data Manipulation](#data-manipulation)**
+
+## Tipe Data
+
+**[Data yang kita pakai](https://res.cloudinary.com/dgil2czkf/raw/upload/v1700316354/DICE/Data%20Gaji.xlsx)**
+
+### Tipe Data berdasarkan nilai
+
+> Int = 1,2,3  
+> Float = 1.2, 3.55555, 3.14  
+> Bool = 1, 0  
+> String = "Assalamualaikum, hi halo."
+
+## Importing Data
+
+**Install and Import Pandas Library**
+
+```
+!pip install pandas
+import pandas as pd
+```
+
+**Excel file:**
+
+```
+df= pd.read_excel('C:\Users\wirah\webscrape\Data Gaji.xlsx')
+```
+
+**Csv file:**
+
+```
+df = pd.read_csv("data.csv")
+```
+
+**JSON file:**
+
+```
+df = pd.read_json("data.json")
+```
+
+**SQL query (prerequiste applied):**
+
+```
+df = pd.read_sql(query, engine)
+```
+
+## Data Preview
+
+Mencari informasi terkait data yang baru saja di import untuk mengetahui langkah apa yang harus dilakukan selanjutnya pada data.
+
+- **`Info`**
+
+```
+df.info()
+```
+
+- **`Tipe Data`**
+
+```
+df.dtypes
+```
+
+- **`Statistika Deskriptif`**
+
+```
+df.describe()
+```
+
+## Pencarian Nilai
+
+Mencari nilai data seperti kriteria yang diinginkan
+
+- **`Head & Tail`**
+
+```
+df.head(6)
+```
+
+```
+df.tail(7)
+```
+
+- **`Query`**
+
+```
+df.query('Usia >37')
+```
+
+```
+# .count untuk menghitung jumlah data dengan kriteria query
+df.query('Usia > 37').count()
+```
+
+- **`Sort`**
+
+```
+df.sort_values(by='Gaji', ascending=False)
+```
+
+- **`loc & iloc`**
+
+```
+# Mencari data berdasarkan baris dan kolom, pada kolom disebutkan nama kolomnya.
+df.loc[0:4,'Pendidikan':'Gaji' ]
+```
+
+```
+# Mencari data berdasarkan baris dan kolom, namun pada kolom disebutkan index kolomnya.
+df.iloc[0:5, 2:5]
+```
+
+- **`df[]`**
+
+```
+# Memilih salah satu kolom dari dataframe
+df['Usia']
+```
+
+```
+# Query menggunakan df[]
+df['Usia']>37
+```
+
+- **`Fungsi Descriptive Statistics`**
+
+```
+# Mencari Mean
+df.mean()
+```
+
+```
+# Mencari Median
+df.median()
+```
+
+```
+# Sum
+df['Usia].sum()
+
+```
+
+## Data Manipulation
+
+Mengubah atau memodifikasi suatu data untuk tujuan tertentu pada proses analisis.
+
+- **`Rename Kolom`**
+
+```
+df.rename(columns = {'Usia':'Umur','Gaji' : 'Salary'})
+```
+
+- **`Remove Kolom`**
+
+```
+df.drop(columns="Usia")
+```
+
+- **`Check Missing Values`**
+
+```
+# Mengecek seberapa banyak value null pada setiap kolom menggunakan df.isnull()
+df.isnull().sum()
+```
+
+- **`Menghapus Missing Values`**
+
+```# Menghapus baris yang memiliki value NA pada salah satu kolom nya
+df.dropna()
+```
+
+- **`Mengisi Missing Values`**
+
+```
+# Mengubah Missing value dengan nilai konstanta (e.g., 4000)
+df_filled_constant = df.fillna(4000); df_filled_constant
+```
+
+```
+# Mengubah Missing Value dengan mean
+df_filled_mean = df.fillna(df.mean()); df_filled_mean
+```
+
+```
+# Mengubah Missing value dengan median
+df_filled_median = df.fillna(df.median()); df_filled_median
+```
+
+```
+# Mengisi nilai forward berdasarkan nilai sebelumnya (forward)
+df_ffill = df.ffill(); df_ffill
+```
+
+```
+# Mengisi nilai sekarang berdasarkan nilai setelahnya (backward)
+df_bfill = df.bfill(); df_bfill
+```
+
+## Penutup 📝
+
+`What we've learn`  
+Kita telah mempelajari Tipe Data, Exploratory Data Analysis (EDA), dan Data Manipulation menggunakan library pandas pada python.
+Semoga bermanfaat. Adios!!
+
+- [Python Cheatsheet](https://www.utc.fr/~jlaforet/Suppl/python-cheatsheets.pdf)
+- [Pandas Documentation](https://pandas.pydata.org/docs/user_guide/index.html)
+- [Pandas Cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
